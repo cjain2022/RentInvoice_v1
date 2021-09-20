@@ -1,3 +1,7 @@
+## End Products Version V1
+- URL: https://rent-invoice.herokuapp.com/
+- Video: https://youtu.be/78PTropCQ8c
+
 ## Rent Invoice V1 
 - This is a project to automate the process of generation of rent invoice.
 - In Version 1, the software provides a direct form which can be used to enter data and generate invoice
@@ -6,6 +10,7 @@
 
 ## What Will Come in Version 2 
 In version 2 we will provide a complete login system for the landlords from which they can maintain all of their properties and generate invoice for all the tenants. It will also be able to fetch old records and help landlords in generating invoices quickly as they do not need to fill the previous bill values.For Example for electricity meters landlords need to fill the new reading and old reading in version 1, whereas in version 2 they do not need to worry about the old reading as it will be automatically fetched from database.
+Apart from this landlords will also be able to send the rent receipts via email to all tenants in one click.
 
 
 
