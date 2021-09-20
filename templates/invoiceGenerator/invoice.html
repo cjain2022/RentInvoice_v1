@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+h1 {
+  font-size: 5.9vw;
+}
+h2 {
+  font-size: 3.0vh;
+}
+p {
+  font-size: 2vmin;
+}
+</style>
+{% endblock %}
+{% block body %}
+<h1 class="center-align"> Generate Rent Invoice </h1>
+<div class="row  purple lighten-4">
+    <form class="col s12" action="{% url 'downloadInvoice'%}" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input type="date" id="billDate" name="billDate" class="validate" required>
+                <label for="billDate"> <span class="black-text"> Billing Date (MM-DD-YYYY) </span>  </label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input type="number" id="dueIn" name="dueIn" class="validate" required>
+              <label for="dueIn"> <span class="black-text">Bill Due In (eg. 5 days) </span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <input type="text" id="fname" name="fname" class="validate" required>
+              <label for="fname"><span class="black-text">First name</span></label>
+            </div>
+            <div class="input-field col s6">
+              <input type="text" id="lname" name="lname" class="validate"> 
+              <label for="lname"><span class="black-text">Last Name</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="mob_num" name="mob_num" class="validate"> 
+                <label for="mob_num"><span class="black-text">Mobile Number</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <input type="number" id="monthlyRent" name="monthlyRent" class="validate" required>
+              <label for="monthlyRent"><span class="black-text">Monthly Rent</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="number" class="validate" id="lastElectricityReading" name="lastElectricityReading" required><br> 
+                <label for="lastElectricityReading"><span class="black-text">Last Electricity Reading</span> </label>
+            </div>
+            <div class="input-field col s6">
+              <input type="number" class="validate" id="newElectricityReading" name="newElectricityReading" required>
+              <label for="newElectricityReading"><span class="black-text">New Electricity Reading</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="number" class="validate" id="pricePerUnitElectricity" name="pricePerUnitElectricity" required>
+                <label for="pricePerUnitElectricity"><span class="black-text">Price Per Unit Electricity</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+              <input type="number" class="validate" id="waterCharge" name="waterCharge" required>
+              <label for="waterCharge"><span class="black-text">Water Charges (Per Person)</span></label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input type="number" class="validate" id="personCount" name="personCount" required>
+              <label for="personCount"><span class="black-text">Number of Person Living In Property</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="number"  class="validate" id="garbageCharge" name="garbageCharge" required>
+                <label for="garbageCharge"><span class="black-text">Garbage Collection Charges</span></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+              <input type="text" id="AdditionalPaymentReason" class="validate" name="AdditionalPaymentReason">
+              <label for="AdditionalPaymentReason"><span class="black-text">Description For Additional Payment</span>  </label>
+            </div>
+            <div class="input-field col s12 m6 ">
+              <input type="number" id="AdditionalPayment"  class="validate" name="AdditionalPayment"> 
+              <label for="AdditionalPayment"><span class="black-text">Additional Amount To Be Collected</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="number" id="Discounts"  class="validate" name="Discounts">
+                <label for="Discounts"><span class="black-text">Any Discounts</span> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <p class="center-align">
+                <button class="btn waves-effect waves-light red lighten-1" type="submit" name="action">Generate Invoice 
+                    <i class="material-icons right">send</i>
+                </button>
+              </p>
+                <!-- <button type="submit"> Generate PDF </button> -->
+            </div>
+        </div>
+                
+        </form>
+</div>
+<!-- <h1>Backup</h1>
+<form action="{% url 'downloadInvoice'%}" method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <label for="billDate">Billing Date </label>
+    <input type="date" id="billDate" name="billDate"><br>
+
+    <label for="dueIn">Bill Due In (eg. 5 days) </label>
+    <input type="number" id="dueIn" name="dueIn"><br>
+
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname"><br>
+    
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname"><br> 
+
+    <label for="mob_num">Mobile Number</label>
+    <input type="text" id="mob_num" name="mob_num"><br> 
+    
+    <label for="monthlyRent">Monthly Rent:</label>
+    <input type="number" id="monthlyRent" name="monthlyRent"> <br>
+    
+    <label for="lastElectricityReading">Last Electricity Reading: </label>
+    <input type="number" id="lastElectricityReading" name="lastElectricityReading"><br> 
+    
+    <label for="newElectricityReading">New Electricity Reading: </label>
+    <input type="number" id="newElectricityReading" name="newElectricityReading"> <br>
+
+    <label for="pricePerUnitElectricity">Price Per Unit Electricity </label>
+    <input type="number" id="pricePerUnitElectricity" name="pricePerUnitElectricity"> <br>
+
+    <label for="waterCharge">Per Person Water Charge</label>
+    <input type="number" id="waterCharge" name="waterCharge"><br>
+    
+    <label for="personCount">Count Of Number of Persons</label>
+    <input type="number" id="personCount" name="personCount"><br> 
+    
+    <label for="garbageCharge">Garbage Charge</label>
+    <input type="number" id="garbageCharge" name="garbageCharge"><br>
+
+    <label for="AdditionalPaymentReason">Description For Additional Payment  </label>
+    <input type="text" id="AdditionalPaymentReason" name="AdditionalPaymentReason"><br> 
+
+    <label for="AdditionalPayment">Additional Amount To Be Collected </label>
+    <input type="number" id="AdditionalPayment" name="AdditionalPayment"><br> 
+
+    <label for="Discounts">Discounts </label>
+    <input type="number" id="Discounts" name="Discounts"><br>
+
+    <button type="submit"> Generate PDF </button> 
+</form> -->
+{% endblock %}
