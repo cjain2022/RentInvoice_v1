@@ -10,14 +10,14 @@ In version 2 we will provide a complete login system for the landlords from whic
 
 
 ## Code FlowCharts
-![BasicFlowChart](screenshots\BasicFlowchart.png)
+![BasicFlowChart](screenshots/BasicFlowchart.png)
 ## Input/Output Screenshots
 - Frontend Structure
-![Frontend_Input](screenshots\website_frontend.png)
+![Frontend_Input](screenshots/website_frontend.png)
 - Filling Data into Frontend
-![Frontend_Input_Data](screenshots\website_frontend_inputData.png)
+![Frontend_Input_Data](screenshots/website_frontend_inputData.png)
 - Result Obtained in PDF Invoice
-![Frontend_Output](screenshots\website_output.png)
+![Frontend_Output](screenshots/website_output.png)
 
 ## How to use the Project ? 
 - Step1- Clone the repo 
